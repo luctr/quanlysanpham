@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" id="name1" onchange="them()" placeholder="thêm danh sách">
+    <button onclick="themCot()">thêm</button>
+    <table border="1" width="700px">
+        <tr>
+            <th >Danh Sách</th>
+            <th width="90px">Action</th>
+        </tr>
+        <tbody id="hienthi">
+            <tr>
+                <td></td>
+                <td><button onclick="xoa()">Xóa</button><button onclick="them()">Sửa</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        let arr=new Array()
+        function themCot(){
+            let x="";
+            for (let i=0;i<arr.length;i++){
+                x+="<tr><td>" + arr[i] + "</td><td><button onclick="+"xoa("+i+")"+">Xóa</button><button onclick="+"sua("+i+")"+">Sửa</button></td></tr>"
+            }
+            document.getElementById("hienthi").innerHTML=x;
+        }
+        function them(){
+            let a=document.getElementById("name1").value
+            arr.push(a);
+            themCot()
+        }
+        function sua(index) {
+            let sua=prompt("nhập tên sản phẩm ");
+            arr[index]=sua;
+            themCot()
+        }
+        function xoa(index) {
+            arr.splice(index,1)
+            themCot()
+        }
+    </script>
+</body>
+</html>
